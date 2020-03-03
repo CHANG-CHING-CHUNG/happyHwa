@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+  box-sizing: border-box;
+}
+body {
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+}
+
+
+#logo {
+  font-size: 4em;
+  font-weight: 350;
+  display: block;
+}
+
+#logo-text{
+  margin: 0;
+  padding-left: 25px;
+}
+
+#nav {
+  display: flex;
+  width: 100%;
+}
+
+
+ul {
+  font-size: 25px;
+  font-weight: 300;
+  width: 100%;
+}
+
+li {
+  padding: 20px;
+}
+
+a {
+  padding: 10px;
+  color: #282222;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover{
+  background-color:#B2B7B2;
+  color: white;
+  font-weight: 400;
+}
+
+
+.push {
+  margin-left: auto;
+}
+
+hr{
+  border:5px solid #716e6e;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.coverbox {
+  justify-content: center;
+}
+
+.cover {
+  width: 50rem;
+}
+
+.text {
+  font-size: 2em;
+}
+
+footer{
+  text-align: center;
+  font-size: 25px;
+  color: #248c9de6;
+}
