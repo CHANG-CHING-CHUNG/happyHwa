@@ -12,6 +12,11 @@ body {
   position: relative;
 }
 
+#logo {
+  max-width:100%;
+    height:auto;
+}
+
 .title {
   color: #fff;
 }
