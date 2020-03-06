@@ -9,25 +9,34 @@
   <title>黑皮驊</title>
 </head>
 <body>
-  <header class="header">
-    <div class="container text-center title">
-      <i class="fab fa-facebook-f fa-3x"></i>
-      <img id="logo" src="./黑皮驊字.png">
-      <h3>Happy Hwa</h3>
-    </div>
-  </header>
-  <nav class="navbar navbar-expand-sm" role="navigation">
-    <div class="container justify-content-around">
-      <div class="navbar-nav ">
-        <a class="nav-link nav-item active"href="#">首頁</a>
-        <a class="nav-link nav-item"href="#">美味菜單</a>
-        <a class="nav-link nav-item"href="#">關於我們</a>
-        <a class="nav-link nav-item"href="#">尋找黑皮驊</a>
-       </div>
-    </div>
-  </nav>
-  <section></section>
-  <footer></footer>
+  <div class="mobile-sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="sideClose()">×</a>
+    <a class="nav-link nav-item active"href="#">首頁</a>
+    <a class="nav-link nav-item"href="#">美味菜單</a>
+    <a class="nav-link nav-item"href="#">關於我們</a>
+    <a class="nav-link nav-item"href="#">尋找黑皮驊</a>
+  </div>
+  <div id="main-content">
+    <header class="header">
+      <a href="https://reurl.cc/xZDalL" target="_blank"><i class="fab fa-facebook-f fa-3x"></i></a>
+      <div class="container text-center title">
+        <img id="logo" src="./黑皮驊ＬＯＧＯ.png">
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-sm" role="navigation">
+      <a id="sidebtn" onclick="sideOpen()">☰</a>
+      <div class="container justify-content-around">
+        <div class="navbar-nav ">
+          <a class="nav-link nav-item active"href="#">首頁</a>
+          <a class="nav-link nav-item"href="#">美味菜單</a>
+          <a class="nav-link nav-item"href="#">關於我們</a>
+          <a class="nav-link nav-item"href="#">尋找黑皮驊</a>
+        </div>
+      </div>
+    </nav>
+    <section></section>
+    <footer></footer>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -35,17 +44,28 @@
   <script>
     window.onscroll = () => {fixedTop();}
 
-const nav = document.querySelector(".navbar");
-const navOffset = nav.offsetTop;
+      const nav = document.querySelector(".navbar");
+      const navOffset = nav.offsetTop;
 
-function fixedTop() {
-  if(window.pageYOffset > navOffset) {
-    nav.classList.add("top-fixed");
-  } else {
-    nav.classList.remove("top-fixed");
-  }
+      function fixedTop() {
+        if(window.pageYOffset > navOffset) {
+          nav.classList.add("top-fixed");
+        } else {
+          nav.classList.remove("top-fixed");
+        }
 
-}
+      }
+      const sideBar = document.querySelector(".mobile-sidebar");
+      const mainContent = document.querySelector("#main-content");
+
+      const sideOpen = () => {
+        sideBar.style.width = "150px";
+        mainContent.style.marginLeft ="150px"
+      };
+      const sideClose = () => {
+        sideBar.style.width = "0px";
+        mainContent.style.marginLeft ="0"
+      };
   </script>
 </body>
 </html>
