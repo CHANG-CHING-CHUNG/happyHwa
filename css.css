@@ -42,8 +42,8 @@ h3 {
   transition:0.5s;
 }
 
-.sidenav {
-  width:150px;
+.sidebar {
+  white-space: nowrap;
 }
 
 
@@ -99,7 +99,7 @@ a {
 }
 
 section {
-  height: 800px;
+  height: 1000px;
 }
 
 .fab {
