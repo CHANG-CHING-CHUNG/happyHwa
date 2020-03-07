@@ -109,12 +109,42 @@ footer {
   display: none;
 }
 
-@media screen and (max-height:500px) {
- .mobile-sidebar a { font-size: 18px;}
-  .navbar-nav { visibility: hidden;}
+#fb-icon {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
-@media screen and (max-width:500px) {
-   .navbar-nav { display: none;}
-   #sidebtn { display: block;}
+@media screen and (max-width:600px){
+  .mobile-sidebar a { font-size: 18px;}
+   .navbar-nav { visibility: hidden;}
+ }
+ 
+ @media screen and (max-width:600px){
+    .navbar-nav { display: none;}
+    #sidebtn { display: block;}
+  }
+
+
+
+@media screen and (max-height:736px) and (max-width:414px){
+  .mobile-sidebar a { font-size: 18px;}
+   .navbar-nav { visibility: hidden;}
+ }
+ 
+ @media screen and (max-height:736px) and (max-width:414px) {
+    .navbar-nav { display: none;}
+    #sidebtn { display: block;}
+  }
+ 
+ @media screen and (max-height:812px) and (max-width:375px){
+  .mobile-sidebar a { font-size: 18px;}
+   .navbar-nav { visibility: hidden;}
+ }
+ 
+ @media screen and (max-height:812px) and (max-width:375px) {
+    .navbar-nav { display: none;}
+    #sidebtn { display: block;}
  }
