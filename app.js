@@ -2,27 +2,27 @@ $(document).ready(() => {
 
   window.onscroll = () => {fixedTop();}
   
-  const nav = document.querySelector(".navbar");
-  const navOffset = nav.offsetTop;
+  const nav = $(".navbar");
+  const navOffset = nav.offset().top;
   
   function fixedTop() {
     if(window.pageYOffset > navOffset) {
-      nav.classList.add("top-fixed");
+      nav.addClass("top-fixed");
     } else {
-      nav.classList.remove("top-fixed");
+      nav.removeClass("top-fixed");
     }
   
   }
-  const sideBar = document.querySelector(".mobile-sidebar");
-  const mainContent = document.querySelector("#main-content");
+  const sideBar = $(".mobile-sidebar");
+  const sideBtn = $("#nav-icon4");
   
   const sideOpen = () => {
-    sideBar.style.width = "150px";
-    mainContent.style.marginLeft ="150px"
+    sideBar.css('width', '150px');
+    sideBtn.css('marginLeft', '150px');
   };
   const sideClose = () => {
-    sideBar.style.width = "0px";
-    mainContent.style.marginLeft ="0"
+    sideBar.css('width', '0px');
+    sideBtn.css('marginLeft', '0px');
   };
   
   $('#nav-icon4').click( () => {
