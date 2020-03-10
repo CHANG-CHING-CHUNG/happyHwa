@@ -36,4 +36,15 @@ $(document).ready(() => {
     }
     
   })
+
+  const mapDiv = document.querySelector('#map');
+  const initMap = () => {
+    const happyHwa = {lat:24.816500, lng:121.026738};
+    const map = new google.maps.Map(mapDiv, {
+      center: happyHwa,
+      zoom: 18
+    }); 
+    const marker = new google.maps.Marker({position: happyHwa, map:map})
+  }
+  initMap();
 })
