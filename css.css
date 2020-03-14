@@ -101,7 +101,8 @@ a {
 section {
   height: 1000px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fab {
