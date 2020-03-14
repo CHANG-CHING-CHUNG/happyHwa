@@ -67,6 +67,14 @@ let adsLatLng;
 let geocoder = new google.maps.Geocoder();
 let addressMarker;
 
+function checkRange() {
+  if(bounds.contains(adsLatLng)) {
+    checkAddress.text("你所處的地方在外送範圍內唷~!");
+  } else {
+    checkAddress.text(`很可惜~你所在的位置在服務範圍之外>"<`);
+  }
+}
+
 const getGeocode = (geocoder) => {
   const address = $('#address').val();
   geocoder.geocode({'address':address}, (results, status) => {
@@ -83,11 +91,7 @@ const getGeocode = (geocoder) => {
 
       adsLatLng = results[0].geometry.location;
 
-      if(bounds.contains(adsLatLng)) {
-        checkAddress.text("你所處的地方在外送範圍內唷~!");
-      } else {
-        checkAddress.text(`很可惜~你所在的位置在服務範圍之外>"<`);
-      }
+      checkRange();
     } else {
       invalid.text("請輸入有效地址!!");
       setTimeout(()=>{invalid.text('')}, 2000);
@@ -103,9 +107,5 @@ $('#submit').on('click', function(){
 google.maps.event.addListener(marker, "dragend", () => {
   happyHwa = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
   bounds = circleRange.getBounds();
-  if(bounds.contains(adsLatLng)) {
-    checkAddress.text("你所處的地方在外送範圍內唷~!");
-  } else {
-    checkAddress.text(`很可惜~你所在的位置在服務範圍之外>"<`);
-  }
+  checkRange()
 })
