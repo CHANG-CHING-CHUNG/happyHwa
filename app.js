@@ -77,7 +77,8 @@ const getGeocode = (geocoder) => {
       }
        addressMarker = new google.maps.Marker({
         map:map,
-        position:results[0].geometry.location
+        position:results[0].geometry.location,
+        animation:google.maps.Animation.DROP
       });
 
       adsLatLng = results[0].geometry.location;
