@@ -38,12 +38,33 @@ $(document).ready(() => {
   })
 })
 const mapDiv = document.querySelector('#map');
+
+const checkAddress = $('#check-address');
+
+const invalid = $("#invalid");
+
+const submit = $('#submit');
+
 let happyHwa = {lat:24.816500, lng:121.026738};
+
 let LatLngList = [happyHwa];
+
+const extendBounds = new google.maps.LatLngBounds();
+
+let geocoder = new google.maps.Geocoder();
+
+const computeDistanceBetween = google.maps.geometry.spherical;
+
+let addressMarker;
+
+
+
+
 const map = new google.maps.Map(mapDiv, {
   center: happyHwa,
   zoom: 17
 }); 
+
 const marker = new google.maps.Marker({
   position: happyHwa,
   map:map,
@@ -60,57 +81,82 @@ const circleRange = new google.maps.Circle({
   radius:100
 });
 circleRange.bindTo('center', marker, 'position');
-let bounds = circleRange.getBounds();
-const extendBounds = new google.maps.LatLngBounds();
 
-const checkAddress = $('#check-address');
-const invalid = $("#invalid");
-let adsLatLng;
-let geocoder = new google.maps.Geocoder();
-let addressMarker;
+const input = document.getElementById('autoinput');
 
-function checkRange(LatLng) {
-  if(bounds.contains(LatLng)) {
+const autoSearch = new google.maps.places.Autocomplete(input);
+
+autoSearch.setComponentRestrictions(
+  {'country': ['tw']});
+
+
+function checkRange(computeDistance, addsMarker, markerCenter) {
+  if(100 > computeDistance.computeDistanceBetween(addsMarker.getPosition(), markerCenter.getPosition())) {
     checkAddress.text("你所處的地方在外送範圍內唷~!");
   } else {
     checkAddress.text(`很可惜~你所在的位置在服務範圍之外>"<`);
   }
 }
 
-const getGeocode = (geocoder) => {
-  const address = $('#address').val();
-  geocoder.geocode({'address':address}, (results, status) => {
 
-    if(status ==='OK') {
-      if(addressMarker) {
-      addressMarker.setMap(null);
-      }
-       addressMarker = new google.maps.Marker({
-        map:map,
-        position:results[0].geometry.location,
-        animation:google.maps.Animation.DROP
-      });
-
-      adsLatLng = results[0].geometry.location;
-      LatLngList.push(addressMarker.position);
-      for(let i = 0; i < LatLngList.length; i++) {
-        extendBounds.extend(LatLngList[i]);
-      }
-      map.fitBounds(extendBounds);
-      checkRange(addressMarker.position);
-    } else {
-      invalid.text("請輸入有效地址!!");
-      setTimeout(()=>{invalid.text('')}, 2000);
+function setAddressMarker(location) {
+  if(addressMarker) {
+    addressMarker.setMap(null);
     }
-  });
-}
-
-$('#submit').on('click', function(){
-  getGeocode(geocoder)}
-  );
+     addressMarker = new google.maps.Marker({
+      map:map,
+      position:(Array.isArray(location)) ? location[0].geometry.location : location,
+      animation:google.maps.Animation.DROP
+    });
+    LatLngList.push(addressMarker.position);
+    for(let i = 0; i < LatLngList.length; i++) {
+      extendBounds.extend(LatLngList[i]);
+    }
+    map.fitBounds(extendBounds);
+    checkRange(computeDistanceBetween, addressMarker,marker);
+  }
   
-google.maps.event.addListener(marker, "dragend", () => {
-  happyHwa = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+  
+  function invalidMessage() {
+    invalid.text('請輸入有效的地址!');
+    setTimeout(() => invalid.text(''), 1000);
+  }
+  
+  function codeAddress() {
+    const address = document.getElementById('autoinput').value;
+    geocoder.geocode( { 
+      'address': address,
+      componentRestrictions:{country:'TW'}
+    }, function(results, status) {
+      if (status == 'OK') {
+        setAddressMarker(results);
+        console.log(results);
+      } else {
+        invalidMessage();
+      }
+    });
+  }
+  
+  
+  google.maps.event.addListener(marker, "dragend", () => {
+    happyHwa = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
   bounds = circleRange.getBounds();
-  checkRange(adsLatLng)
+  if(addressMarker) {
+    checkRange(computeDistanceBetween,addressMarker, marker);
+  }
+})
+
+autoSearch.addListener('place_changed', function() {
+  const place = autoSearch.getPlace();
+  if(!place.geometry) {
+    invalidMessage();
+  } else {
+    setAddressMarker(place.geometry.location)
+    }
+})
+
+
+
+submit.on('click', () => {
+  codeAddress();
 })

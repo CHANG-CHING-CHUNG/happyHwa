@@ -229,7 +229,7 @@ footer {
   z-index: 1;
 }
 
-#address {
+#autoinput {
   width: 500px;
 }
 
@@ -252,7 +252,7 @@ footer {
    .navbar-nav { visibility: hidden;}
    body { font-size: 16px;}
    #map {height: 30%; width: 80%;}
-   #address {width: auto;}
+   #autoinput {width: auto;}
  }
  
  @media screen and (max-height:736px) and (max-width:414px) {
@@ -264,7 +264,7 @@ footer {
   .mobile-sidebar a { font-size: 18px;}
    .navbar-nav { visibility: hidden;}
    body { font-size: 16px;}
-   #address {width: auto;}
+   #autoinput {width: auto;}
  }
  
  @media screen and (max-height:812px) and (max-width:375px) {
