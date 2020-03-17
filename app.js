@@ -43,21 +43,15 @@ const checkAddress = $('#check-address');
 
 const invalid = $("#invalid");
 
-const submit = $('#submit');
-
 let happyHwa = {lat:24.816500, lng:121.026738};
 
 let LatLngList = [happyHwa];
 
 const extendBounds = new google.maps.LatLngBounds();
 
-let geocoder = new google.maps.Geocoder();
-
 const computeDistanceBetween = google.maps.geometry.spherical;
 
 let addressMarker;
-
-
 
 
 const map = new google.maps.Map(mapDiv, {
@@ -80,6 +74,7 @@ const circleRange = new google.maps.Circle({
   center:happyHwa,
   radius:100
 });
+
 circleRange.bindTo('center', marker, 'position');
 
 const input = document.getElementById('autoinput');
@@ -119,23 +114,9 @@ function setAddressMarker(location) {
   
   function invalidMessage() {
     invalid.text('請輸入有效的地址!');
-    setTimeout(() => invalid.text(''), 1000);
+    setTimeout(() => invalid.text(''), 2500);
   }
-  
-  function codeAddress() {
-    const address = document.getElementById('autoinput').value;
-    geocoder.geocode( { 
-      'address': address,
-      componentRestrictions:{country:'TW'}
-    }, function(results, status) {
-      if (status == 'OK') {
-        setAddressMarker(results);
-        console.log(results);
-      } else {
-        invalidMessage();
-      }
-    });
-  }
+
   
   
   google.maps.event.addListener(marker, "dragend", () => {
@@ -153,10 +134,4 @@ autoSearch.addListener('place_changed', function() {
   } else {
     setAddressMarker(place.geometry.location)
     }
-})
-
-
-
-submit.on('click', () => {
-  codeAddress();
 })

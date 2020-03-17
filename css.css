@@ -99,10 +99,9 @@ a {
 }
 
 section {
+  text-align: center;
   height: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #756d6d3b;
 }
 
 .fab {
@@ -223,6 +222,9 @@ footer {
 #map {
   height: 50%;
   width: 50%;
+  border-radius: 20px;
+  border: 2px solid #847171;
+  margin: 0 auto;
 }
 
 #main-nav {
@@ -231,6 +233,21 @@ footer {
 
 #autoinput {
   width: 500px;
+  border-radius: 50px;
+  border: 4px solid #887373;
+  margin-top: 20px;
+}
+
+.span-box {
+  height: 30px;
+}
+
+#check-address {
+  display: block;
+}
+
+#invalid {
+  display: block;
 }
 
 @media screen and (max-width:600px){
