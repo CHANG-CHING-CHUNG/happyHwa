@@ -81,6 +81,8 @@ const input = document.getElementById('autoinput');
 
 const autoSearch = new google.maps.places.Autocomplete(input);
 
+autoSearch.setFields(['geometry']);
+
 autoSearch.setComponentRestrictions(
   {'country': ['tw']});
 
