@@ -40,19 +40,19 @@ $(document).ready(() => {
   })
 
   
-$('#home').on('click', () => {
+$('.home').on('click', () => {
   changePage('home');
 })
 
-$('#menu').on('click', () => {
+$('.menu').on('click', () => {
   changePage('menu');
 })
 
-$('#about').on('click', () => {
+$('.about').on('click', () => {
   changePage('about');
 })
 
-$('#delivery').on('click', () => {
+$('.delivery').on('click', () => {
   changePage('delivery');
 })
 
