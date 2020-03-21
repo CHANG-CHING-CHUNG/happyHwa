@@ -10,10 +10,10 @@
 </head>
 <body>
   <div class="mobile-sidebar">
-    <a class="sidebar nav-link nav-item active"href="#">首頁</a>
-    <a class="sidebar nav-link nav-item"href="#">美味菜單</a>
-    <a class="sidebar nav-link nav-item"href="#">關於我們</a>
-    <a class="sidebar nav-link nav-item"href="#">尋找黑皮驊</a>
+    <a class="sidebar nav-link nav-item active" onclick="changePage('home')" href="#">首頁</a>
+    <a class="sidebar nav-link nav-item"href="#" onclick="changePage('menu')">美味菜單</a>
+    <a class="sidebar nav-link nav-item"href="#" onclick="changePage('about')">關於我們</a>
+    <a class="sidebar nav-link nav-item"href="#" onclick="changePage('delivery')">訂餐外送</a>
   </div>
   <div id="main-content">
     <header class="header">
@@ -29,15 +29,24 @@
       </div>
       <div class="container justify-content-around">
         <div class="navbar-nav ">
-          <a class="nav-link nav-item active"href="#">首頁</a>
-          <a class="nav-link nav-item"href="#">美味菜單</a>
-          <a class="nav-link nav-item"href="#">關於我們</a>
-          <a class="nav-link nav-item"href="#">外送</a>
+          <div id="home" class="nav-link nav-item active">首頁</div>
+          <div id="menu" class="nav-link nav-item">美味菜單</div>
+          <div id="about" class="nav-link nav-item">關於我們</div>
+          <div id="delivery" class="nav-link nav-item">訂餐外送</div>
         </div>
       </div>
     </nav>
     <a href="https://www.facebook.com/%E9%BB%91%E7%9A%AE%E9%A9%8A%E9%AD%AF%E8%82%89%E9%A3%AF-272594316105714/" target="_blank"><img id="fb-icon" src="./FB-Icon.png"></a>
-    <section>
+    <section class="page home-page">
+      Homepage
+    </section>
+    <section class="page menu-page">
+      Menu page
+    </section>
+    <section class="page about-page">
+      About page
+    </section>
+    <section class="page delivery-page">
       <h1>外送範圍查詢</h1>
       <p>請輸入地址確認是否在外送範圍內</p>
       <input type="text" id="autoinput" autocomplete="off" placeholder="輸入地址">

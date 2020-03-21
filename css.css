@@ -249,6 +249,14 @@ footer {
   display: block;
 }
 
+.page {
+  display: none;
+}
+
+.home-page {
+  display: block;
+}
+
 @media screen and (max-width:600px){
   .mobile-sidebar a { font-size: 18px;}
    .navbar-nav { visibility: hidden;}
