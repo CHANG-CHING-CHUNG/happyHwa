@@ -345,6 +345,12 @@ footer {
   max-width: 30em;
 }
 
+.delivery-page {
+  height: 1000px;
+  width: auto;
+  text-align: center;
+}
+
 
 @media screen and (min-width: 30em) {
   .pb3-ns {
