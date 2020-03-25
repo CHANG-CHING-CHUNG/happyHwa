@@ -61,15 +61,31 @@ function changePage(page) {
   switch (page) {
     case 'home':
       $('.home-page').show();
+      $('.home').addClass("active");
+      $('.menu').removeClass("active");
+      $('.about').removeClass("active");
+      $('.delivery').removeClass("active");
       break;
     case 'menu':
       $('.menu-page').show();
+      $('.menu').toggleClass("active");
+      $('.home').removeClass("active");
+      $('.about').removeClass("active");
+      $('.delivery').removeClass("active");
       break;
     case 'about':
       $('.about-page').show();
+      $('.about').toggleClass("active");
+      $('.menu').removeClass("active");
+      $('.home').removeClass("active");
+      $('.delivery').removeClass("active");
       break;
     case 'delivery':
       $('.delivery-page').show();
+      $('.delivery').toggleClass("active");
+      $('.menu').removeClass("active");
+      $('.about').removeClass("active");
+      $('.home').removeClass("active");
       break;
   }
   history.pushState(null, null, page)
@@ -96,13 +112,13 @@ function changePage(page) {
   
   const map = new google.maps.Map(mapDiv, {
     center: happyHwa,
-    zoom: 17
+    zoom: 15
   }); 
   
   const marker = new google.maps.Marker({
     position: happyHwa,
     map:map,
-    draggable:true
+    draggable:false
   });
   
   const circleRange = new google.maps.Circle({
@@ -112,7 +128,7 @@ function changePage(page) {
     fillOpacity:0.4,
     map:map,
     center:happyHwa,
-    radius:100
+    radius:1000
   });
   
   circleRange.bindTo('center', marker, 'position');
@@ -128,7 +144,7 @@ function changePage(page) {
   
   
   function checkRange(computeDistance, addsMarker, markerCenter) {
-    if(100 > computeDistance.computeDistanceBetween(addsMarker.getPosition(), markerCenter.getPosition())) {
+    if(1000 > computeDistance.computeDistanceBetween(addsMarker.getPosition(), markerCenter.getPosition())) {
       checkAddress.text("你所處的地方在外送範圍內唷~!");
     } else {
       checkAddress.text(`很可惜~你所在的位置在服務範圍之外>"<`);
